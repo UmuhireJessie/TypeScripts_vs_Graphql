@@ -34,3 +34,17 @@ function calculateTax(income: number, taxYear = 2022): number {
 }
 
 calculateTax(10_000);
+
+type Employee = {
+    readonly id: number;
+    name: string; // make it optional or initialise it to ''
+    retire: (date: Date) => void;
+}
+
+let employee: Employee = {
+  id: 1,
+  name: "Jessie",
+  retire: (date: Date) => {
+    console.log(date);
+  },
+};
