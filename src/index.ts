@@ -48,3 +48,60 @@ let employee: Employee = {
     console.log(date);
   },
 };
+
+function KgToLbs(weight: number | string): number {
+    // Narroowing
+    if (typeof weight == 'number')
+        return weight * 2.2;
+    else 
+        return parseInt(weight) * 2.2 
+}
+KgToLbs(10)
+KgToLbs('10kg')
+
+type Draggable = {
+    drag: () => void
+}
+
+type Resizable = {
+    resize: () => void;
+}
+
+type UIWidget = Draggable & Resizable;
+
+let textBox: UIWidget = {
+    drag: () => {},
+    resize: () => {}
+}
+
+// Literal (exact, specific)
+type Quantity = 50 | 100
+let quantity: Quantity = 100;
+
+function greet(name: string | null | undefined) {
+    if (name)
+    console.log(name.toUpperCase());
+    else 
+        console.log('Hola!')
+}
+
+greet(undefined)
+
+type Customer = {
+    birthday?: Date
+};
+
+function getCustomer(id: number): Customer | null | undefined {
+    return id === 0 ? null : { birthday : new Date() }
+}
+
+let customer = getCustomer(1)
+// Optional property access operator
+console.log(customer?.birthday?.getFullYear());
+
+// Optional element access operator
+// customers?.[0]
+
+//Optional call
+let log: any = null
+log?.('a')  // log(a) is going to give us a TypeError
